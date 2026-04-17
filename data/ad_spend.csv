@@ -1,0 +1,7 @@
+date,source,campaign_name,clicks,impressions,cost
+2024-01-01,meta,winter_sale_cold,120,10500,"45.20"
+2024-01-01,google_ads,brand_search,90,3200,"78"
+2024-01-01,linkedin,b2b_whitepaper_download,12,1100,"55.00"
+2024-01-02,meta,winter_sale,140,12000,"48.10"
+2024-01-02,google_ads,brand_search,100,3500,"82"
+2024-01-02,linkedin,b2b_whitepaper,15,1300,"60"
