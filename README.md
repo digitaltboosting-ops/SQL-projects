@@ -3,6 +3,21 @@
 This project demonstrates how to take raw marketing and analytics data and turn it into clean, analysis‑ready tables using SQL.  
 It includes table creation, data cleaning, business analysis queries, and advanced SQL techniques.
 
+# Executive Summary
+This project demonstrates a complete SQL workflow using realistic, messy marketing data. 
+It covers table creation, data cleaning, deduplication, attribution logic, business analysis, 
+and advanced SQL patterns such as CTEs and window functions.
+
+## What this dataset demonstrates
+- messy cost/revenue stored as text → CAST
+- missing campaign values → COALESCE
+- inconsistent campaign naming → CASE (REGEXP optional)
+- duplicate transactions → ROW_NUMBER()
+- missing session_id → LEFT JOIN logic
+- cross‑source attribution → JOIN + GROUP BY
+- date normalization → DATE(), DATE_TRUNC()
+
+
 ## Folder Structure
 - **/data** – raw CSV files:
   - ad_spend.csv
