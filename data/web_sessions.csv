@@ -1,0 +1,5 @@
+| session_id | user_id | session_start | source | medium | campaign | pageviews |
+| --- | --- | --- | --- | --- | --- | --- |
+| s_001 | u_10 | 2024‑01‑01 10:05:00 | google | cpc | brand | 3 |
+| s_002 | u_11 | 2024‑01‑01 10:10:00 | meta | paid | winter | 1 |
+| s_003 | u_10 | 2024‑01‑01 10:20:00 | direct | none | null | 2 |
