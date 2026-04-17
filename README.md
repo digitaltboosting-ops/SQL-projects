@@ -1,7 +1,7 @@
 # SQL Cleaning & Data Preparation Project
 
 This project demonstrates how to take raw marketing and analytics data and turn it into clean, analysis‑ready tables using SQL.  
-It includes table creation, data cleaning, and basic analysis queries.
+It includes table creation, data cleaning, business analysis queries, and advanced SQL techniques.
 
 ## Folder Structure
 - **/data** – raw CSV files:
@@ -12,7 +12,8 @@ It includes table creation, data cleaning, and basic analysis queries.
 - **/SQL**
   - schema.sql – creates the three raw tables
   - cleaning.sql – cleans and deduplicates the data
-  - analysis.sql – example analysis queries (ROAS, conversion rate, daily trends)
+  - analysis.sql – basic analysis queries (ROAS, conversion rate, daily trends)
+  - advanced.sql – advanced SQL examples (CTEs, window functions, attribution joins)
 
 ## What the SQL does
 
@@ -42,12 +43,20 @@ Contains simple, practical analysis queries:
 
 These queries show how cleaned data can be used to answer real business questions.
 
+### 4. advanced.sql
+Demonstrates more advanced SQL concepts:
+- CTE‑based KPI calculation (daily funnel)
+- Window functions (7‑day rolling revenue)
+- LEFT JOIN attribution logic (sessions → transactions)
+
+These examples show deeper SQL capability beyond basic querying.
+
 ## How to use
 1. Run **schema.sql** to create the tables.  
 2. Load the CSV files from `/data` into those tables.  
 3. Run **cleaning.sql** to generate cleaned outputs.  
-4. Use **analysis.sql** to explore performance and metrics.
-
+4. Use **analysis.sql** for basic performance insights.  
+5. Explore **advanced.sql** for more complex SQL patterns.
 
 
 CSV files are located in: /data/
