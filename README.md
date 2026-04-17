@@ -1,28 +1,37 @@
-# SQL Marketing Analytics Project
-Cleaning, Modeling & Analyzing Multi‑Source Marketing Data
+# SQL Cleaning & Data Preparation Project
 
-## 1. Skills Demonstrated
-- SQL cleaning (COALESCE, CAST, TRIM, REGEXP)
-- Joining marketing, analytics, and revenue datasets
-- Window functions (ROW_NUMBER, LAG)
-- CTE‑based data modeling
-- Deduplication and attribution logic
-- Preparing BI‑ready tables for dashboards
+This project demonstrates how to take raw marketing and analytics data and turn it into clean, analysis‑ready tables using SQL.
 
-## 2. Project Overview
-This project unifies marketing spend, web sessions, and transaction data into a clean, analysis‑ready model.  
-The dataset simulates exports from Meta, Google Ads, GA4, and an e‑commerce system, including inconsistencies, missing values, and duplicates.
+## Folder Structure
+- **/data** – raw CSV files:
+  - ad_spend.csv
+  - web_sessions.csv
+  - transactions.csv
+- **/SQL**
+  - schema.sql – creates the three raw tables
+  - cleaning.sql – cleans, fixes, and deduplicates the data
 
-The goal is to demonstrate practical SQL skills used by digital analysts to produce reliable campaign performance metrics.
+## What the SQL does
+### 1. schema.sql
+Creates the base tables:
+- ad_spend
+- web_sessions
+- transactions
 
-## 3. Dataset
-### ad_spend  
-Daily spend, clicks, impressions, and campaign names from paid platforms.
+These tables intentionally contain messy fields (text numbers, inconsistent campaigns, duplicates) to demonstrate cleaning skills.
 
-### web_sessions  
-Session‑level data from GA4 with UTMs, timestamps, and pageviews.
+### 2. cleaning.sql
+Runs a full cleaning pipeline:
+- fixes data types (CAST)
+- standardizes text fields (LOWER, TRIM)
+- fills missing values (COALESCE)
+- removes duplicate transactions (ROW_NUMBER)
+- prepares final cleaned tables for analysis
 
-### transactions  
-E‑commerce conversions with revenue, timestamps, and occasional duplicates.
+## How to use
+1. Run **schema.sql** to create the tables.
+2. Load the CSV files from `/data` into those tables.
+3. Run **cleaning.sql** to generate cleaned outputs.
 
-CSV files are located in:
+
+CSV files are located in: /data/
