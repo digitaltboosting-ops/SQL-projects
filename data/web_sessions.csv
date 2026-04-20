@@ -1,5 +1,14 @@
-| session_id | user_id | session_start | source | medium | campaign | pageviews |
-| --- | --- | --- | --- | --- | --- | --- |
-| s_001 | u_10 | 2024‑01‑01 10:05:00 | google | cpc | brand | 3 |
-| s_002 | u_11 | 2024‑01‑01 10:10:00 | meta | paid | winter | 1 |
-| s_003 | u_10 | 2024‑01‑01 10:20:00 | direct | none | null | 2 |
+session_id,user_id,session_start,source,medium,campaign,pageviews
+s_001,u_10,2024-01-01 10:05,google,CPC,brand,3
+s_002,u_11,2024/01/01 10:10,meta,paid,winter,1
+s_003,u_10,2024-01-01 10:20,direct,NONE,,2
+s_003,u_10,2024-01-01 10:20,direct,NONE,,2          -- duplicate
+s_004,u_12,2024-01-02 09:55,google,cpc,brand,4
+s_005,u_12,2024-01-02 10:45,Meta ,Paid,winter,2     -- whitespace + casing
+s_006,u_13,2024-01-02 11:10,LinkedIn,paid,b2b_whitepaper,3
+s_007,u_14,2024-01-03 09:30,google_ads,cpc,brand,5
+s_008,u_15,2024-01-03 10:00,meta,paid,winter_sale_cold,1
+s_009,u_16,2024-01-03 10:20,linkedin,paid,b2b_whitepaper_download,2
+s_010,u_17,2024-01-04 08:00,google,cpc,brand,3
+s_011,u_18,2024/01/04 08:30,meta,paid,winter,1
+s_012,u_19,2024-01-05 09:00,direct,none,,1
