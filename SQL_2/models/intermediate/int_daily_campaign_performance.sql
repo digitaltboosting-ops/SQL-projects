@@ -4,7 +4,7 @@
 
 SELECT
     COALESCE(sp.date, s.date, t.date) AS date,
-    COALESCE(sp.campaign_name, s.campaign_name) AS campaign_name,
+    COALESCE(sp.campaign_name, s.campaign_name, t.campaign_name) AS campaign_name,
 
     SUM(sp.cost) AS spend,
     COUNT(DISTINCT s.session_id) AS sessions,
