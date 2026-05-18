@@ -1,5 +1,16 @@
 -- =========================================================
--- MART: UNIFIED DASHBOARD KPIs (REPORTING LAYER)
+-- MART_DASHBOARD_KPIS.SQL
+-- Reporting Layer: Executive KPI Dashboard Base
+-- =========================================================
+-- Purpose:
+-- This is the final consolidated reporting layer of the 
+-- analytics pipeline. It transforms intermediate performance 
+-- data into a structured view optimized for BI tools 
+-- (Power BI, Tableau, Looker Studio).
+--
+-- Answers the business questions:
+-- "What is our overall marketing performance by day?"
+-- "Which campaigns are meeting our target ROAS and profit margins?"
 -- =========================================================
 
 SELECT
