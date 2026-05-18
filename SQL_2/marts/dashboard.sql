@@ -34,7 +34,7 @@ daily_sessions AS (
         DATE(session_start) AS date,
         LOWER(TRIM(campaign_name)) AS campaign_name,
         COUNT(DISTINCT session_id) AS sessions
-    FROM cleaned_sessions
+    FROM stg_sessions
     GROUP BY DATE(session_start), LOWER(TRIM(campaign_name))
 ),
 
