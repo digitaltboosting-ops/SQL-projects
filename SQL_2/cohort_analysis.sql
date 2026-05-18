@@ -23,7 +23,7 @@ WITH first_session AS (
     SELECT
         user_id,
         MIN(DATE(session_start)) AS first_session_date
-    FROM cleaned_sessions
+    FROM stg_sessions
     GROUP BY user_id
 ),
 
@@ -39,7 +39,7 @@ user_sessions AS (
         s.user_id,
         DATE(s.session_start) AS session_date,
         f.first_session_date
-    FROM cleaned_sessions s
+    FROM stg_sessions s
     JOIN first_session f
         ON s.user_id = f.user_id
 ),
