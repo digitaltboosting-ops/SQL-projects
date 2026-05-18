@@ -18,7 +18,7 @@ WITH daily_spend AS (
         DATE(date) AS date,
         LOWER(TRIM(campaign_name)) AS campaign_name,
         SUM(cost) AS spend
-    FROM cleaned_ad_spend
+    FROM stg_ad_spend
     GROUP BY DATE(date), LOWER(TRIM(campaign_name))
 ),
 
@@ -51,7 +51,7 @@ daily_revenue AS (
         LOWER(TRIM(s.campaign_name)) AS campaign_name,
         SUM(t.revenue) AS revenue,
         COUNT(DISTINCT t.transaction_id) AS transactions
-    FROM cleaned_transactions t
+    FROM stg_transactions t
     JOIN cleaned_sessions s
         ON t.session_id = s.session_id
     GROUP BY DATE(t.transaction_time), LOWER(TRIM(s.campaign_name))
