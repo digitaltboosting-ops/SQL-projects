@@ -27,5 +27,5 @@ SELECT
     ROUND(transactions * 1.0 / NULLIF(sessions, 0), 4) AS conversion_rate,
     ROUND(spend / NULLIF(sessions, 0), 2) AS cost_per_session,
     ROUND(spend / NULLIF(transactions, 0), 2) AS cost_per_acquisition
-FROM {{ ref('int_daily_campaign_performance') }}
+FROM int_daily_campaign_performance
 ORDER BY date DESC, campaign_name ASC;
