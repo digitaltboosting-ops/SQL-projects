@@ -1,1 +1,9 @@
 
+donation_id,donor_id,donation_date,amount,campaign_type,channel
+1,101,2025-01-15,50.00,Direct Mail,Offline
+2,102,2025-02-01,500.00,Annual Gala,Event
+3,101,2025-06-20,100.00,Email Push,Digital
+4,103,2025-03-10,25.00,Social Media,Digital
+5,102,2026-01-10,600.00,Annual Gala,Event
+6,101,2026-04-05,75.00,Email Push,Digital
+7,104,2026-05-12,1200.00,Major Donor Outreach,Direct
