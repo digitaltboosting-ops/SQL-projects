@@ -1,42 +1,31 @@
 -- ============================================================================
 -- File: Non-Profit_Fundraising/transform_donations.sql
--- Purpose: Robust ETL script handling messy formats (currency strings, dates)
---          and missing data (null amounts, missing campaign names).
+-- Purpose: Standardized ETL script with configurable business parameters.
 -- ============================================================================
 
--- Step 1: Clean, parse formats, and fill missing values
-WITH sanitized_donations AS (
+-- STEP 0: Centralized Business Assumptions & Parameters
+WITH parameters AS (
+    SELECT 
+        CAST('2026-01-01' AS DATE) AS active_donor_cutoff_date,
+        1000.00                    AS major_donor_threshold_usd,
+        250.00                     AS mid_tier_threshold_usd
+),
+
+-- Step 1: Clean and sanitize inputs
+sanitized_donations AS (
     SELECT 
         CAST(donation_id AS INT) AS donation_id,
         CAST(donor_id AS INT) AS donor_id,
-        
-        -- Parse string date to DATE type
         CAST(donation_date AS DATE) AS donation_date,
-        
-        -- Fix Data Format: Strip '$' currency symbol and cast to DECIMAL
-        CAST(REPLACE(amount, '$', '') AS DECIMAL(10,2)) AS donation_amount,
-        
-        -- Handle Missing Data & Text Formatting: Trim spacing, fix casing, supply default for NULLs
-        COALESCE(
-            INITCAP(TRIM(campaign_type)), 
-            'Uncategorized Campaign'
-        ) AS campaign_type,
-        
-        -- Handle Missing Data: Supply fallback for missing channels
-        COALESCE(
-            NULLIF(TRIM(channel), ''), 
-            'UNKNOWN'
-        ) AS acquisition_channel
+        CAST(REPLACE(amount, '$', '') AS DECIMAL(10,2)) AS donation_amount
     FROM 
         raw_data
     WHERE 
-        -- Data Quality Filter: Remove records where donation amount is missing or <= 0
         amount IS NOT NULL 
-        AND amount != ''
         AND CAST(REPLACE(amount, '$', '') AS DECIMAL(10,2)) > 0
 ),
 
--- Step 2: Aggregate lifetime metrics by donor
+-- Step 2: Aggregate donor metrics
 donor_aggregates AS (
     SELECT 
         donor_id,
@@ -51,22 +40,28 @@ donor_aggregates AS (
         donor_id
 )
 
--- Step 3: Apply final business rules
+-- Step 3: Apply business logic using top-level parameters
 SELECT 
-    donor_id,
-    first_donation_date,
-    latest_donation_date,
-    total_donations,
-    total_contributed_usd,
-    avg_donation_usd,
+    d.donor_id,
+    d.first_donation_date,
+    d.latest_donation_date,
+    d.total_donations,
+    d.total_contributed_usd,
+    d.avg_donation_usd,
+    
+    -- Evaluate donor status against parameter
     CASE 
-        WHEN latest_donation_date >= '2026-01-01' THEN 'Active'
+        WHEN d.latest_donation_date >= p.active_donor_cutoff_date THEN 'Active'
         ELSE 'Lapsed'
     END AS donor_status,
+    
+    -- Evaluate donor tier against parameters
     CASE 
-        WHEN total_contributed_usd >= 1000 THEN 'Major Donor'
-        WHEN total_contributed_usd >= 250 THEN 'Mid-Tier'
+        WHEN d.total_contributed_usd >= p.major_donor_threshold_usd THEN 'Major Donor'
+        WHEN d.total_contributed_usd >= p.mid_tier_threshold_usd THEN 'Mid-Tier'
         ELSE 'Grassroots'
     END AS donor_tier
 FROM 
-    donor_aggregates;
+    donor_aggregates d
+CROSS JOIN 
+    parameters p;
