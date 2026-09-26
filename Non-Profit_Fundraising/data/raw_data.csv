@@ -1,9 +1,11 @@
-donation_id,donor_id,donation_date,amount,campaign_type,channel
-1,101,2025-01-15,$50.00,  direct mail  ,Offline
-2,102,2025-02-01,$500.00,Annual Gala,Event
-3,101,2025-06-20,$100.00,,Digital
-4,103,2025-03-10,$25.00,Social Media,
-5,102,2026-01-10,$600.00,ANNUAL GALA,Event
-6,101,2026-04-05,$75.00,email push,Digital
-7,104,2026-05-12,$1200.00,Major Donor Outreach,Direct
-8,105,2026-06-01,,Direct Mail,Offline
+donation_id,donor_id,donation_date,amount,campaign_type,channel,donor_state,donation_frequency
+1,101,2025-01-15,$50.00,  direct mail  ,Offline,NY,One-time
+2,102,2025-02-01,$500.00,Annual Gala,Event,CA,Annual
+3,101,2025-06-20,$100.00,,Digital,NY,One-time
+4,103,2025-03-10,$25.00,Social Media,,TX,Monthly
+5,102,2026-01-10,$600.00,ANNUAL GALA,Event,CA,Annual
+6,101,2026-04-05,$75.00,email push,Digital,NY,One-time
+7,104,2026-05-12,$1200.00,Major Donor Outreach,Direct,FL,Annual
+8,103,2025-04-10,$25.00,Social Media,Digital,TX,Monthly
+9,103,2025-05-10,$25.00,Social Media,Digital,TX,Monthly
+10,105,2026-02-14,$50.00,Email Push,Digital,WA,Monthly
